@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        .clearfix:after{content: '';display: block;height: 0;overflow: hidden;visibility: hidden;clear: both;}
+        .fa-one{width:400px;height: 300px;background: #abcdef;position: relative;display: inline-block;}
+        .in{border:none;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);width:0px;height: 60px;
+            outline:none/*去掉选做中后的边框*/;border-radius: 30px;letter-spacing: 0.1em;box-shadow: 0 0 20px 0 crimson;
+        background: crimson;color: #fff;transition: all 1s ease-in-out 0s;opacity: 0}
+        .fa-one:hover .in{width:250px;padding-left: 20px;opacity: 1}
+        .in::placeholder{color: #ccc;}
+        .sc{width:100px;height: 100px;background:crimson ;position: absolute;top:33%;left:70%;border-radius: 50%;
+        transition: all 1s ease-in-out 0s;transform: translateX(-125px)}
+        .sc:after{content: '';width:30px;height: 30px;border-radius: 50%;position: absolute;color: #fff;top:27px;left:27px;display: block;
+        border:1px solid #fff;transition: all 1s ease-in-out 0s}
+        .sc:before{content: '';display: block;position: absolute;top:55px;left:55px;width:2px;height: 20px;background: #fff;border-radius: 2px;
+        transform: rotate(-33deg);transition: all 1s ease-in-out 0s}
+        .fa-one:hover .sc{transform: translateX(0px);background: #4e2a2c}
+        .fa-one:hover .sc:after{width:2px;height: 20px;border-radius: 2px;background: #fff;border:none;transform: translate(25px,15px) rotate(45deg);  }
+        .fa-one:hover .sc:before{transform: rotate(135deg) translateY(11px) translateX(-7px);}
+        .fa-two{width:200px;height: 200px;background: #acbdef;border:1px solid transparent;display: inline-block}
+        .fa-two>span{width:50px;height: 50px;background: #ffff00;display: block;margin: 50px auto;outline: 2px solid #fff;outline-offset: -6px;
+        transition: all 0.5s ease-in-out 0s;position: relative}
+        .fa-two:hover span{outline:thin dotted;outline-offset: -2px;color: yellow;background: #4e2a2c;}
+        .sp:after{content: '';width:0;height: 0;position: absolute;top:0;left:0;display: block;background: linear-gradient(to right bottom, rgba(15, 54, 84, 0.99) 2%, rgba(54, 16, 5, 0.84) 100%);
+            transition: all .5s ease-in-out 0s;}
+        .fa-two:hover span:after{width:17px;height: 17px;}
+        .four{display: inline-block}
+        .xz{width:600px;height: 600px;background: #592f16;display: inline-block;position: relative;}
+        .xz-so{width:500px;height: 500px;margin: 50px auto;position: relative;}
+        .xz-so div{transform: rotate(60deg);animation: mov 2s infinite}
+        .xz-so div:nth-child(1){width:200px;height: 200px;position: absolute;top:0;left:0;right: 0;bottom: 0;margin: auto;
+         animation-delay: 475ms}
+        .xz-so div:nth-child(1):after{content: '';width:7px;height: 7px;border-radius: 50%;display: block;background: #DB2F00;top:14px;left:14px;position: absolute;
+        }
+        .xz-so div:nth-child(2){width:200px;height: 200px;position: absolute;top:0;left:0;right: 0;bottom: 0;margin: auto;
+            animation-delay: 350ms;}
+        .xz-so div:nth-child(2):after{content: '';width:12px;height: 12px;border-radius: 50%;display: block;background: #ff6d37;position: absolute;
+       top:12px;left:12px; }
+        .xz-so div:nth-child(3){width:200px;height: 200px;position: absolute;top:0;left:0;right: 0;bottom: 0;margin: auto;
+            animation-delay: 225ms;}
+        .xz-so div:nth-child(3):after{content: '';width:20px;height: 20px;border-radius: 50%;display: block;background: #ffa489;position: absolute;
+        top:10px;left:10px;}
+        .xz-so div:nth-child(4){width:200px;height: 200px;position: absolute;top:0;left:0;right: 0;bottom: 0;margin: auto;
+            animation-delay: 100ms;}
+        .xz-so div:nth-child(4):after{content: '';width:30px;height: 30px;border-radius: 50%;display: block;background: #56bebf;position: absolute;
+        top:5px;left:5px;}
+        .xz-so div:nth-child(5){width:200px;height: 200px;position: absolute;top:0;left:0;right: 0;bottom: 0;margin: auto;
+            animation-delay: 0ms;}
+        .xz-so div:nth-child(5):after{content: '';width:40px;height: 40px;border-radius: 50%;display: block;background: #13A3A5;position: absolute;
+        }
+        /*.xz-so div{animation: mov 1.5s ease-in-out 0s infinite,ok 6s ease 1s}*/
+        .xz .fa-tex{position: absolute;top:50%;left:50%;font-size: 24px;color: #fff;z-index: 1;transform: translate(-50%,-50%)}
+        .xz .tex{ ;animation: ok 2s ease-in-out infinite;
+        }
+        @keyframes ok {
+            0%{transform: scale(0.2)}
+            50%{transform: scale(1)}
+            60%{transform: scale(1)}
+            100%{transform: scale(0.2)}
+        }
+        @keyframes mov {
+            0%{transform:rotate(60deg)}
+            5%{transform:rotate(60deg)}
+            70%{transform:rotate(420deg)}
+            100%{transform:rotate(420deg)}
+        }
+        .four{width:400px;height: 400px;background: #592f16;display: inline-block;position: relative;}
+        .lo{font-size: 24px;color: #fff;text-align: center;line-height: 400px;position: absolute;left:50%;margin-left: -56px;z-index: 1;
+        animation: texmov 1.7s ease-in-out infinite}
+        .fa-bo{width:150px;height: 150px;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);
+        }
+        .bo{animation: col 1.7s ease-in-out infinite;width:100%;height: 100%}
+        .four span{display: block;width:150px;height: 3px;background: #ccc;position: absolute;top:350px;left:125px;border-radius: 50%;
+        animation: yy 1.7s ease-in-out infinite}
+        @keyframes yy {
+            0%{transform: scale(1)}
+            50%{transform: scale(0.500)}
+            60%{transform: scale(0.5)}
+            100%{transform: scale(1)}
+        }
+        @keyframes col {
+            0%{background: #795da3;border-radius: 0;transform: rotate(0deg) scale(1);}
+           50%{background: #cf752b;border-radius: 50%;transform: rotate(360deg) scale(0.5);}
+            60%{background: #cf7827;border-radius: 50%;transform: rotate(360deg) scale(0.5);}
+            100%{background: #795da3;border-radius: 0;transform: rotate(0deg) scale(1);}
+        }
+        @keyframes texmov {
+            0%{transform: scale(0.2)}
+            50%{transform: scale(1)}
+            60%{transform: scale(1)}
+            100%{transform: scale(0.2)}
+        }
+        .five{width:500px;height: 400px;background: #592f16;display: inline-block;position: relative;}
+        .five-one{left:90px;}
+        .five-one :nth-of-type(1){width:100px;height: 100px;position: absolute;top:0;left:0;opacity: .5;animation: mv 2s ease-in-out 0s infinite}
+        .five-one :nth-of-type(1):after{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;top:50%;
+        margin-top: -2px;left:-10px;position: absolute}
+        .five-one :nth-of-type(1):before{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;top:50%;
+            margin-top: -2px;right:-10px;position: absolute}
+        .five-one :nth-of-type(2){width:100px;height: 100px;position: absolute;top:0;left:0;animation: mv 2s ease-in-out 0s infinite}
+        .five-one :nth-of-type(2):after{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;left:50%;
+            margin-left: -2px;top:-10px;position: absolute}
+        .five-one :nth-of-type(2):before{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;left:50%;
+            margin-left: -2px;bottom:-10px;position: absolute}
+        .ii{font-size: 40px;color: #fff;z-index: 1;width:100px;height: 100px;border-radius: 50%;background: #ff3856;text-align: center;
+            line-height: 100px;position: absolute;top:50%;transform: translateY(-50%)}
+        .five-two{font-size: 112px;width:150px;height: 150px;border-radius: 50%;background: #fff;text-align: center;line-height: 150px;
+        position: absolute;top:50%;left:155px;transform: translateY(-50%);color: #8f8f8f;}
+
+        .five-three :nth-of-type(1){width:100px;height: 100px;position: absolute;top:0;left:0;animation: mv 2s ease-in-out 0s infinite;  }
+        .five-three :nth-of-type(1):after{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;top:50%;
+            margin-top: -2px;left:-10px;position: absolute}
+        .five-three :nth-of-type(1):before{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;top:50%;
+            margin-top: -2px;right:-10px;position: absolute}
+        .five-three :nth-of-type(2){width:100px;height: 100px;position: absolute;top:0;left:0;animation: mv 2s ease-in-out 0s infinite}
+        .five-three :nth-of-type(2):after{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;left:50%;
+            margin-left: -2px;top:-10px;position: absolute}
+        .five-three :nth-of-type(2):before{content: '';width:5px;height: 5px;border-radius: 50%;background: #2f4bf9;display: block;left:50%;
+            margin-left: -2px;bottom:-10px;position: absolute}
+        .five-three{right:125px;}
+
+        .sb{width:150px;height: 150px;position: absolute;top:0;left:0;animation: mv 2s ease-in-out 0s infinite}
+        .sb:after{content: '';width:10px;height: 10px;border-radius: 50%;background: #2f4bf9;position: absolute;
+        }
+        .sb:before{content: '';width:10px;height: 10px;border-radius: 50%;background: #2f4bf9;position: absolute;}
+        .five-two :nth-of-type(1):after{top:50%;margin-top: -5px;left:-20px;}
+        .five-two :nth-of-type(1):before{top:50%;margin-top: -5px;right:-20px;}
+        .five-two :nth-of-type(2):after{left:50%;margin-left: -5px;top:-20px;}
+        .five-two :nth-of-type(2):before{left:50%;margin-left: -5px;bottom:-20px;}
+        .five-two{animation: zjian 2s ease-in-out 0s infinite}
+        @keyframes mv {
+            0%{transform:rotate(0deg)}
+            80%{transform: rotate(360deg)}
+            100%{transform: rotate(360deg)}
+        }
+        @keyframes zjian {
+            0%{opacity: 0.8;}
+            50%{opacity: 0.2}
+            60%{opacity:0.2;}
+            100%{opacity: 0.8;}
+        }
+        .six{width:100%;height: 400px;background: #592f16;display: inline-block;color: #fff;font-size: 26px;position: relative;}
+        .six-son{height: 120px;width:620px;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);overflow: hidden;)
+        ;border-bottom: 2px solid rgba(0,0,0,.5);border-top: 2px solid rgba(0,0,0,.5);
+        }
+        .six span{width:80px;height: 80px;border-radius: 50%;background: #795da3;display:inline-block;text-align: center;line-height: 80px;
+            animation: zh 2.2s ease-in-out infinite;}
+        .six-son-ing{margin-top: 20px;}
+        .six-son .six-l{background: #a71d5d;animation-delay: 0ms/*infinite*/}
+        .six-son .six-o{background: #ffff00;animation-delay: 50ms}
+        .six-son .six-a{background: rgba(54,255,255,.6);animation-delay: 100ms;}
+        .six-son .six-d{background: #2f4bf9;animation-delay: 150ms;}
+        .six-son .six-i{background: #cf752b;animation-delay: 200ms}
+        .six-son .six-n{background: #efce61;animation-delay: 250ms;}
+        .six-son .six-g{background: #bd2c00;animation-delay: 300ms}
+        @keyframes zh {
+            0% { transform: translateY(-150px); }
+            20% { transform: translateY(30px); }
+            30% { transform: translateY(-10px); }
+            40% { transform: translateY(0); }
+            60% { transform: translateY(0); }
+            80% { transform: translateY(-20px); }
+            100% { transform: translateY(150px); }
+        }
+        .seven-fa{width:100%;height: 400px;background: #bd2c00;position: relative;color: #fff;font-size: 50px;}
+        .seven{width:80%;height:150px;background: #cf752b;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%)}
+        .seven div{display: inline-block;line-height: 150px;right: -100px;transform: rotate(180deg);opacity: 0;
+        animation: fig 2.5s linear infinite;position: absolute;}
+        .seven div:nth-child(8){width:40px;height: 40px;border-radius: 50%;background: #592f16;top:50%;margin-top: -20px;}
+        .seven div:nth-child(9){width:40px;height: 40px;border-radius: 50%;background: #13d1be;top:50%;margin-top: -20px;}
+        .seven div:nth-child(10){width:40px;height: 40px;border-radius: 50%;background: #d13b2d;top:50%;margin-top: -20px;
+        }
+        .seven div:nth-child(1){animation-delay: 0ms;}
+        .seven div:nth-child(2){animation-delay: 0.2s;}
+        .seven div:nth-child(3){animation-delay: 0.4s;}
+        .seven div:nth-child(4){animation-delay: 0.6s;}
+        .seven div:nth-child(5){animation-delay: 0.8s;}
+        .seven div:nth-child(6){animation-delay: 1s;}
+        .seven div:nth-child(7){animation-delay: 1.2s;}
+        .seven div:nth-child(8){animation-delay: 1.4s;}
+        .seven div:nth-child(9){animation-delay: 1.6s;}
+        .seven div:nth-child(10){animation-delay: 1.8s;}
+        @keyframes fig {
+            0% {
+                right:0;
+                opacity:0;
+            }
+            35% {
+                right: 41%;
+                transform:rotate(0deg) translateY(40px);
+                opacity:1;
+
+            }
+            65% {
+                right:59%;
+                transform:rotate(0deg) translateY(40px);
+                opacity:1;
+            }
+            100% {
+                right:100%;
+                transform:rotate(-180deg);
+                opacity:0;
+            }
+        }
+        .eight{width:350px;height: 200px;background: #592f16;font-size: 46px;color: #fff;font-weight: 800;position: relative;cursor: pointer;float: left}
+        .eight-son{width:200px;height: 80px;background: #cf752b;line-height: 80px;position: absolute;top:50%;left:50%;
+        transform: translate(-50%,-50%) skew(-20deg);box-shadow: 10px 10px 5px 0 rgba(0,0,0,.5);transition: all .5s ease 0s;}
+        .eight-son p{margin-left: 20px;}
+        .eight-son span{width:24px;height: 30px;border-bottom:4px solid #fff;border-right:4px solid #fff;display: block;position: absolute;top:23px;
+        right:23px;transform: rotate(-45deg);}
+        .eight-son span:after{content: '';width:24px;height: 30px;border-bottom:4px solid #fff;border-right:4px solid #fff;display: block;position: absolute;top:0px;
+            right:-4px;transition: all .5s ease}
+        .eight-son span:before{content: '';width:24px;height: 30px;border-bottom:4px solid #fff;border-right:4px solid #fff;display: block;position: absolute;top:0px;
+            right:-4px;transition: all .5s ease}
+
+        .eight-son:hover{width:250px;box-shadow: 15px 15px 5px 0 rgba(255, 55, 44, 0.8)
+        }
+         .eight-son:hover span:after{transform: translate(-12px,-16px)}
+        .eight-son:hover span:before{transform: translate(-28px,-32px)}
+
+        .fat-one{width:250px;height: 300px;background: #4e2a2c;margin-left: 20px;border:1px solid rgba(255, 255, 0, 0.58)
+      ;float: left}
+        .fat-one>div{width:150px;height: 250px;background: pink;margin: 10px auto;position: relative;border-top-left-radius: 100px;
+            border-top-right-radius: 100px;overflow: hidden}
+        .fat-one>div>div{width:391px;height: 407px;position: absolute;top:-67px;left:-82%;
+            background: linear-gradient(to bottom,#bd2c00 25%,#13d1be 25%,#13d1be 50%,#592f16 50%,#592f16 75%,#efce61 75%,#efce61 100%);
+            transform: rotate(-30deg);animation: ss 3s linear infinite}
+        @keyframes ss {
+            0% {
+                background-position: 0 0;
+            }
+            100%{background-position: 0 407px;}
+        }
+    </style>
+</head>
+<body class="clearfix">
+<div class="fa-one">
+    <input type="text" class="in" placeholder="搜索">
+    <div class="sc"></div>
+</div>
+<div class="fa-two">
+    <span class="sp"></span>
+</div>
+<div class="xz">
+    <div class="fa-tex">
+        <div class="tex">Loading...</div>
+    </div>
+
+    <div class="xz-so">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div class="four">
+    <div class="lo">LOADING</div>
+    <div class="fa-bo">
+        <div class="bo"></div>
+    </div>
+    <span></span>
+</div>
+<div class="five">
+    <div class="five-one ii">
+        LOA
+        <div></div>
+        <div></div>
+    </div>
+    <div class="five-two">
+        D
+        <div class="sb"></div>
+        <div class="sb"></div>
+    </div>
+    <div class="five-three ii">
+        ING
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div class="six">
+    <div class="six-son">
+        <div class="six-son-ing">
+            <span class="six-l">L</span>
+            <span class="six-o">O</span>
+            <span class="six-a">A</span>
+            <span class="six-d">D</span>
+            <span class="six-i">I</span>
+            <span class="six-n">N</span>
+            <span class="six-g">G</span>
+        </div>
+    </div>
+</div>
+<div class="seven-fa">
+    <div class="seven">
+        <div>L</div>
+        <div>O</div>
+        <div>A</div>
+        <div>D</div>
+        <div>I</div>
+        <div>N</div>
+        <div>G</div>
+        <div> </div>
+        <div> </div>
+        <div> </div>
+    </div>
+</div>
+<div class="eight">
+    <div class="eight-son">
+        <p>NEXT</p>
+        <span></span>
+    </div>
+</div>
+<div class="fat-one">
+    <div>
+        <div></div>
+    </div>
+</div>
+</body>
+</html>
