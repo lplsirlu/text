@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        .str{width:600px;height: 400px;position: relative;overflow: hidden;margin:  50px auto}
+        .str div{position: absolute;width:100%;height: 100%;}
+        .str div img{height: 100%;transform:translate(-400px,0px)}
+        .str div{display: none;}
+        .str .show{display: block;}
+        .btn{width:200px;height: 50px;/*background: #abcdef;*/z-index: 1;position: absolute;left:50%;margin-left: -100px;top:80%;}
+        .btn span{width:40px;height: 10px;background: #ffff00;display: block;float: left;margin: 20px 5px;cursor: pointer}
+        .btn span:hover{background: #1caf9a}
+        .btn .mo{background: #1caf9a}
+    </style>
+    <script>
+        window.onload=function () {
+            var oGo=document.getElementById('go');
+            var shu=oGo.getElementsByTagName('div');
+            var index=0;
+            var oSpan=oGo.children[4].getElementsByTagName('span');
+            /*var time=setInterval(function () {
+                for(var i=0;i<shu.length;i++){
+                    shu[i].ss=i;
+                    shu[i].className='';
+                }
+                index++;
+                /!*console.log(index)*!/
+                if(index>3){
+                    index=0;
+                }
+                shu[index].className='show';
+            },2000);*/
+            oGo.onmousemove=function () {
+                clearInterval(time)
+            };
+            oGo.onmouseout=function () {
+                time=setInterval(function () {
+                    for(var i=0;i<shu.length;i++){
+                        shu[i].ss=i;
+                        shu[i].className='';
+                    }
+                    index++;
+                    if(index>3){
+                        index=0
+                    }
+                   btn();
+                },2000)
+            };
+            oGo.onmouseout();
+
+                for(var i=0;i<oSpan.length;i++){
+                    oSpan[i].k=i;
+                    oSpan[i].onmousemove=function () {
+                        index=this.k;
+                        btn();
+                    }
+                }
+
+            function btn() {
+                for(var i=0;i<oSpan.length;i++){
+                    oSpan[i].className='';
+                    shu[i].className='';
+                }
+                shu[index].className='show';
+                oSpan[index].className='mo';
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div class="str" id="go">
+    <div class="show"><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/3.jpg"></div>
+    <div><img src="img/4.jpg"></div>
+    <div><img src="img/5.jpg"></div>
+    <ul class="btn">
+        <span class="mo"></span>
+        <span ></span>
+        <span></span>
+        <span></span>
+    </ul>
+</div>
+</body>
+</html>
